@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import AboutUs from "./pages/aboutus/AboutUs";
+import AllData from "./pages/allData/AllData";
+import Contact from "./pages/contact/Contact";
+import Filtered from "./pages/filtered/Filtered";
+import Home from "./pages/home/Home";
+import { Routes, Route, Router, Switch } from "react-router-dom";
+import Services from "./pages/services/Services";
+import Buy from "./pages/services/buy/Buy";
+import Rent from "./pages/services/rent/Rent";
+import Sell from "./pages/services/sell/Sell";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/properties" element={<Filtered />} />
+        <Route exact path="/services" element={<Services />} />
+        <Route path="/services/buy" element={<Buy />} />
+        <Route path="/services/rent" element={<Rent />} />
+        <Route path="/services/sell" element={<Sell />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </div>
   );
 }
