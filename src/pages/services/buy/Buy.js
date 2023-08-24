@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import style from "./Buy.module.css";
-import { NavLink } from "react-router-dom";
-import bg from "./bg.jpg";
+import { NavLink, useNavigate } from "react-router-dom";
+import bg from "./bg1.jpg";
 import Footer from "../../../components/footer/Footer";
 
 function Buy() {
+  const navigate=useNavigate();
   const [data, setData] = useState(
     JSON.parse(localStorage.getItem("datas")) || []
   );
@@ -16,6 +17,10 @@ function Buy() {
     // console.log("buy", buy);
     setBuyData(buy)
   }, []);
+
+  const handleForward = () => {
+    navigate("/contact");
+  };
 
   return (
     <div>
@@ -52,10 +57,18 @@ function Buy() {
                 height="200px"
                 src={item.img}
               />
+              <div>
+                <button onClick={handleForward} className={style.type}>
+                  {item.type}
+                </button>
+                <button onClick={handleForward} className={style.type}>
+                  Get In Touch
+                </button>
+              </div>
               <p>
                 Location : {item.location} {item.place}
               </p>
-              <button className={style.type}>{item.type}</button>
+
               <p>Name : {item.name}</p>
               <p>Address : {item.address}</p>
               <p>Price : {item.price}</p>

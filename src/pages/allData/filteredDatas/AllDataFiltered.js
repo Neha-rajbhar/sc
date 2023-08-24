@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import all from "./AllData.module.css";
+import all from "./AllDataFiltered.module.css";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-function AllData() {
+function AllDataFiltered() {
   const navigate = useNavigate();
   const [initialData, setInitialData] = useState([]);
   const [sortedData, setSortedData] = useState([]);
@@ -14,33 +14,30 @@ function AllData() {
     axios.get("http://localhost:5000/getData").then((response) => {
       const fetchedData = response.data;
       setInitialData(fetchedData);
-      // setSortedData(fetchedData.slice(0, displayCount));
+      setSortedData(fetchedData);
     });
   }, []);
 
-  // useEffect(() => {
-  //   setSortedData([...initialData]);
-  // }, [initialData]);
-
   useEffect(() => {
-    setSortedData(initialData.slice(0, displayCount));
-  }, [initialData, displayCount]);
+    setSortedData([...initialData]);
+  }, [initialData]);
+
+  //   useEffect(() => {
+  //     setSortedData(initialData.slice(0, displayCount));
+  //   }, [initialData, displayCount]);
 
   const sortPriceLTH = () => {
-    const sortedDataLTH = [...initialData].sort((a, b) => a.price - b.price);
+    const sortedDataLTH = [...sortedData].sort((a, b) => a.price - b.price);
     setSortedData(sortedDataLTH);
   };
 
   const sortPriceHTL = () => {
-    const sortedDataHTL = [...initialData].sort((a, b) => b.price - a.price);
+    const sortedDataHTL = [...sortedData].sort((a, b) => b.price - a.price);
     setSortedData(sortedDataHTL);
   };
 
   const handleForward = () => {
     navigate("/contact");
-  };
-  const handleShowMore = () => {
-    navigate("/allDataFiltered")
   };
 
   return (
@@ -83,32 +80,8 @@ function AllData() {
           );
         })}
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {displayCount < initialData.length && (
-          <button
-            onClick={handleShowMore}
-            className={all.showMoreButton}
-            style={{
-              color: "white",
-              backgroundColor: "cadetblue",
-              width: "200px",
-              height: "50px",
-              fontSize: "25px",
-              borderRadius: "5px",
-            }}
-          >
-            Show More
-          </button>
-        )}
-      </div>
     </div>
   );
 }
 
-export default AllData;
+export default AllDataFiltered;

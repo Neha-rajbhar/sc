@@ -49,22 +49,25 @@
 }
 .contactBtn {
   color: #fff;
-  letter-spacing: -0.05rem;
-  background-color: #1b1b1b;
+
+  background-color: white;
   border-radius: 0.625rem;
   flex: none;
   justify-content: center;
   align-items: center;
-  padding: 1rem 2.5rem;
+  padding: 10px 20px;
   font-family: Epilogue, sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1em;
+
   text-decoration: none;
   transition: color 0.3s, background-color 0.3s;
   display: flex;
   margin: 0.25rem 2.5rem;
   border: none;
+}
+.contactBtn a {
+  color: #7065f0;
 }
 .contactBtn a:hover {
   color: #7065f0;
@@ -113,6 +116,9 @@
   border-radius: 15px;
   padding: 2%;
 }
+.ulService {
+  margin-top: 7px;
+}
 
 .list ul li {
   position: relative;
@@ -136,12 +142,13 @@
   color: white;
   font-size: 19px;
   cursor: pointer;
-
+  padding: 10px 10px;
+  margin-top: 10px;
 }
 .navlink:hover {
   border: 1px solid white;
   border-radius: 10px;
-  padding: 20%;
+  padding: 10px;
 }
 .list ul li ul li:hover {
 }

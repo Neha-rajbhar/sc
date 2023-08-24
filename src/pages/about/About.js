@@ -13,14 +13,13 @@ function About() {
   let [datas, setData] = useState([]);
   let [newD, setNewData] = useState(null);
   let [curr, setCur] = useState("");
-  
 
   const [filteredData, setFilteredData] = useRecoilState(filteredState);
 
   useEffect(() => {
     axios.get("http://localhost:5000/getData").then((data) => {
       setData(data.data);
-      
+
       localStorage.setItem("datas", JSON.stringify(data.data));
     });
   }, []);
@@ -29,23 +28,25 @@ function About() {
     event.preventDefault();
 
     if (!searchType) {
-      toast.error("Please select a property type first.", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
+      // toast.error("Please select a property type first.", {
+      //   position: "top-center",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      // });
+      // return;
+      alert("Please select a property type first.");
     }
 
     let newData = datas
       .filter((item) => item.type === searchType)
-      .filter((item) => item.location === search);
+      .filter((item) => item.location === search || item.place === search);
 
+    console.log(newData, "new");
     localStorage.setItem("filtered", JSON.stringify(newData));
     setFilteredData(newData);
 

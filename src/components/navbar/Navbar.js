@@ -28,7 +28,7 @@ function Navbar() {
           <li>
             <NavLink to="/services">Services</NavLink>
 
-            <ul>
+            <ul className={navbar.ulService}>
               <li>
                 <NavLink className={navbar.navlink} to="/services/buy">
                   Buy

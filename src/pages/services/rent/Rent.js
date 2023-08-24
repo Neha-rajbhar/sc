@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import style from "./Rent.module.css";
-import { NavLink } from "react-router-dom";
-import bg from "./bg.jpg";
+import { NavLink, useNavigate } from "react-router-dom";
+import bg from "./bg1.png";
 import Footer from "../../../components/footer/Footer";
 
 function Rent() {
+  const navigate=useNavigate()
   const [data, setData] = useState(
     JSON.parse(localStorage.getItem("datas")) || []
   );
@@ -17,6 +18,10 @@ function Rent() {
     setBuyData(buy);
   }, []);
 
+
+  const handleForward = () => {
+    navigate("/contact");
+  };
   return (
     <div>
       <div className={style.mainSection}>
@@ -51,10 +56,18 @@ function Rent() {
                   height="200px"
                   src={item.img}
                 />
+                 <div>
+                <button onClick={handleForward} className={style.type}>
+                  {item.type}
+                </button>
+                <button onClick={handleForward} className={style.type}>
+                  Get In Touch
+                </button>
+              </div>
                 <p>
                   Location : {item.location} {item.place}
                 </p>
-                <button className={style.type}>{item.type}</button>
+               
                 <p>Name : {item.name}</p>
                 <p>Address : {item.address}</p>
                 <p>Price : {item.price}</p>

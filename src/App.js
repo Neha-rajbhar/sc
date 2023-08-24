@@ -10,6 +10,7 @@ import Services from "./pages/services/Services";
 import Buy from "./pages/services/buy/Buy";
 import Rent from "./pages/services/rent/Rent";
 import Sell from "./pages/services/sell/Sell";
+import AllDataFiltered from "./pages/allData/filteredDatas/AllDataFiltered";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
         <Route path="/services/rent" element={<Rent />} />
         <Route path="/services/sell" element={<Sell />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/allDataFiltered" element={<AllDataFiltered />} />
       </Routes>
     </div>
   );
